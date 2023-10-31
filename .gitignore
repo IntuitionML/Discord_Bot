@@ -5,7 +5,6 @@ temp
 notes.txt
 .dockerignore
 __pycache__
-allowed_channels.yaml
 Dockerfile
 fly_commands.txt
 fly.toml

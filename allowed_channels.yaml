@@ -1,0 +1,3 @@
+# Add your allowed channels or use /allow /deny in the channel you want to control access to.
+allowed_channels:
+- 1153527406888484935
