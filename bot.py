@@ -2,15 +2,11 @@
 Bot Current:
 - View channel for post with instagram.com/p/ or /reel/ and download/post the movie from the link
 
-
-Bot Goal:
-- LLM research assistant, web search to collect data and info on user topic and post findings.
-- YT transcriber/ summarizer
-
-
-
-Discord Interactions (Slash command suggestions)
-https://stackoverflow.com/questions/75551524/how-do-i-create-slash-commands-in-discord-py
+ToDo:
+- Error Handling 
+- In-Discord functionality:
+    - Start, Stop, Pause the bot
+- Logging
 '''
 
 
@@ -83,7 +79,7 @@ async def deny(ctx):
         await ctx.send(f'Channel {ctx.channel.id} not in allowed list.')
 
 
-# Loop through cogs and load them.
+# Loop and load cogs.
 @bot.event
 async def setup_hook():
   for filename in os.listdir('./cogs'):
@@ -94,8 +90,7 @@ async def setup_hook():
         print("Unable to load pycache folder.")
 
 
-
-# Sync Command Tree. Needed for Hybrid commands (Slash Commands)
+# Sync Command Tree. Needed for bot.hybrid_commands (Slash Commands)
 @bot.command()
 @commands.guild_only()
 @commands.is_owner()
@@ -104,6 +99,5 @@ async def sync(ctx):
     await ctx.send (f"Synced {len(synced)} commands to current guild")
     print(f"Synced: {synced}")
     return
-
 
 bot.run(DISCORD_TOKEN)
