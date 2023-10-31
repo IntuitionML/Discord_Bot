@@ -1,0 +1,5 @@
+python-dotenv
+discord
+instaloader
+asyncio
+PyYAML==6.0.1
