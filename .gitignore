@@ -1,14 +1,16 @@
 .env
 Discord-LLM-Bot.code-workspace
-temp
+temp\
+test\
 .venv
+.csv
 notes.txt
 __pycache__
 events.log
 # For Fly.io hosting
 Dockerfile
 fly_commands.txt
-fly.toml
 .dockerignore
 # Temp block
 admin_commands.py
+cogs\admin_commands.py
