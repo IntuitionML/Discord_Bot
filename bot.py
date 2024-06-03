@@ -47,7 +47,18 @@ logging_handler = logging.FileHandler(filename='events.log', encoding='utf-8', m
 async def on_ready():
     print(f'Logged in as {bot.user}')
     logging.info(f"Logged in as {bot.user}")
-    await bot.change_presence(status=discord.Status.online, activity=discord.CustomActivity(name='🌽Online🌽'))
+    
+    # can't check dev portal app name in code, so hard coding the name change. Since this is only for goofin around make sure to sync as needed
+    # rate limit is twice per hour
+    # this could be a cog lol
+    try:
+        await bot.user.edit(username="Gaylem")
+        print("\nUsername changed successfully\n\n")
+    except discord.HTTPException as e:
+        print(f"\n\nFailed to change username: {e}")
+
+    #await bot.change_presence(status=discord.Status.online, activity=discord.CustomActivity(name='🌽Online🌽'))
+    await bot.change_presence(status=discord.Status.online, activity=discord.CustomActivity(name='🏳️‍🌈Gay🏳️‍🌈'))
     #await bot.change_presence(status=discord.Status.online, activity=discord.CustomActivity(name='🥳Online🥳'))
     
 
