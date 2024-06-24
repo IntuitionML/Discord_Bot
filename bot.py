@@ -95,7 +95,7 @@ async def corner(ctx):
     if ctx.channel.id not in corner_channels:
         return
 
-    target_date = datetime.combine(datetime(2024, 6, 27), time(10, 0))
+    target_date = datetime.combine(datetime(2024, 6, 28), time(22, 0))
     time_now = datetime.now()
     time_left = target_date - time_now
     days, total_seconds = time_left.days, time_left.seconds
@@ -107,6 +107,7 @@ async def corner(ctx):
     #url_the_game = get_random_game_url()
     #print(f"-----CHECK-----------{url_the_game}") # check
 
+    
     # make x games man
     author = ctx.guild.get_member(160112526745403392)
     if author:
@@ -119,16 +120,34 @@ async def corner(ctx):
         print(f"-------------------------------Using account Name: {embed_author_name}")
         embed_author_icon_url = author.avatar.url if author.avatar else "https://pbs.twimg.com/profile_images/1283874111081664515/hxnHB9Gu_400x400.jpg" # xgame man default avatar
     
+
+
+
     # Create embed message ref: https://plainenglish.io/blog/send-an-embed-with-a-discord-bot-in-python
     embed = discord.Embed(
-        title=f"Something is around the corner!", url=get_random_game_url(),
+        title=f"Oh shit bois! It's happening! Click here to find out more!", url=get_random_game_url(),
         description=f"Only **{days} days, {hours} hours, {minutes} minutes, and {seconds:.0f} seconds** until we find out what it is!!!",
         color = 15014199 # int value for "X games logo red" Hex:E51937
     )
-    embed.set_author(name=embed_author_name, url=get_random_game_url(), icon_url=embed_author_icon_url)
+    # Removing spoofed author
+    #embed.set_author(name=embed_author_name, url=get_random_game_url(), icon_url=embed_author_icon_url)
+    bot_author = bot.user.display_name
+    bot_icon = bot.user.avatar
+    embed.set_author(name=bot_author, url=get_random_game_url(), icon_url=bot_icon)
     embed.set_thumbnail(url="https://pbs.twimg.com/profile_banners/18954398/1707222290/1500x500")
 
-    await ctx.send(embed=embed)
+
+    #
+    # Add something special for June
+    #
+    image_path = "image.png"
+    if os.path.exists(image_path):
+        file = discord.File(image_path, filename="image.png")
+        embed.set_image(url="attachment://image.png")
+        print(f"Image path: {image_path}")
+        await ctx.send(embed=embed, file=file)
+    else:
+        await ctx.send(embed=embed)
 
 
 
